@@ -28,4 +28,9 @@ export class PetsUserService {
     const url = "http://localhost:8080/customer/username/"+username;
     return this.http.get<Customer>(url);
   }
+
+  searchPetsByCategory(searchParam:string){
+    const url = "http://localhost:8080/showPets/category/"+searchParam;
+    return this.http.get(url);
+  }
 }

@@ -4,6 +4,8 @@ import { PetOrders } from '../../../models/PetOrders';
 import { Customer } from '../../../models/Customer';
 import { PetList } from '../../../models/PetList';
 import { Router } from '@angular/router';
+import { response } from 'express';
+import { error } from 'console';
 
 @Component({
   selector: 'app-pets.user',
@@ -11,11 +13,11 @@ import { Router } from '@angular/router';
   styleUrl: './pets.user.component.css'
 })
 export class PetsUserComponent {
-  constructor(private petsUserService:PetsUserService, private route:Router){}
+  constructor(private petsUserService: PetsUserService, private route: Router) { }
   pets: any;
   cart: PetOrders[] = [];
   total: number = 0
-  customer= new Customer(0, '', '', '', '', 0, '') 
+  customer = new Customer(0, '', '', '', '', 0, '')
   ngOnInit() {
     if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
       const username = sessionStorage.getItem('username');
@@ -47,7 +49,7 @@ export class PetsUserComponent {
       complete: () => console.log("Pets have been fetched.")
     })
   }
-  
+
   addToCart(pet: PetList) {
     const petOrdersModels = new PetOrders(0, this.customer, pet, new Date(), "confirmed");
     this.cart.push(petOrdersModels);
@@ -66,5 +68,12 @@ export class PetsUserComponent {
         console.error(error);
       }
     });
+  }
+
+  searchTerm: string = '';
+  searchPetsByCategory() {
+    console.log(this.pets)
+    this.pets = this.pets.filter((pet: { category: string }) => pet.category === this.searchTerm);
+    console.log(this.pets)
   }
 }

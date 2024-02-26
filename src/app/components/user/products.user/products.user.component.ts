@@ -79,4 +79,11 @@ export class ProductsUserComponent {
       error: (error) => console.error(error)
     })
   }
+
+  searchTerm: string = '';
+  searchPetsByCategory() {
+    console.log(this.products)
+    this.products = this.products.filter((pet: { productCategory: string }) => pet.productCategory === this.searchTerm);
+    console.log(this.products)
+  }
 }

@@ -32,32 +32,32 @@
         <div class="col-md-4">
             <h5 class="text-center">User Details</h5>
             <form>
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="cId">Customer ID</label>
                     <input [(ngModel)]="customer.cid" type="number" min="1" class="form-control" id="cId" name="cId"
                         required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="cName">Name</label>
                     <input [(ngModel)]="customer.cname" type="text" class="form-control" id="cName" name="cName"
                         required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="cSurname">Surname</label>
                     <input [(ngModel)]="customer.csurname" type="text" class="form-control" id="cSurname"
                         name="cSurname">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="cEmail">Email</label>
                     <input [(ngModel)]="customer.cemail" type="email" class="form-control" id="cEmail" name="cEmail"
                         required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="cPhone">Phone</label>
                     <input [(ngModel)]="customer.cphone" type="number" class="form-control" id="cPhone" name="cPhone"
                         required>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="cAddress">Address</label>
                     <input [(ngModel)]="customer.caddress" type="text" class="form-control" id="cAddress"
                         name="cAddress" required>
@@ -66,17 +66,27 @@
             </form>
         </div>
     </div>
-
-    <div class=" row">
+    <hr>
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search pets..." [(ngModel)]="searchTerm">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-warning text-dark mx-2" type="button" (click)="searchPetsByCategory()">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div *ngFor="let pet of pets" class="col-md-6 col-lg-3 mb-4">
-            <div class="card h-100 d-flex flex-column">
+            <div class="card h-100 d-flex flex-column border-success">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ pet.name }}</h5>
                     <p class="card-text"><b>Breed:</b> {{pet.breed}} ({{pet.color}} {{pet.category}})</p>
                     <p class="card-text">{{ pet.description }}</p>
                     <p class="card-text">Price: {{ pet.price }}</p>
                     <div class="mt-auto">
-                        <button (click)="addToCart(pet)" class="btn btn-outline-success px-4">Add to scart</button>
+                        <button (click)="addToCart(pet)" class="btn btn-outline-success px-4">Add to cart</button>
                     </div>
                 </div>
             </div>

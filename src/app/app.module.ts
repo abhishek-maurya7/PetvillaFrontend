@@ -16,6 +16,7 @@ import { StoreComponent } from './components/user/store/store.component';
 import { SuccessComponent } from './components/user/success/success.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { FooterComponent } from './partials/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoginComponent } from './components/auth/login/login.component';
     StoreComponent,
     SuccessComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

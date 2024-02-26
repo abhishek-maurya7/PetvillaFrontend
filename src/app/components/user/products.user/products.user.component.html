@@ -37,36 +37,46 @@
             <form>
                 <div class="form-group">
                     <label for="cId">Customer ID</label>
-                    <input [(ngModel)]="customer.cid" type="number" min="1" class="form-control" id="cId" name="cId"
+                    <input [(ngModel)]="customer.cid" type="number" min="1" class="form-control mb-2" id="cId" name="cId"
                         required>
                 </div>
                 <div class="form-group">
                     <label for="cName">Name</label>
-                    <input [(ngModel)]="customer.cname" type="text" class="form-control" id="cName" name="cName"
+                    <input [(ngModel)]="customer.cname" type="text" class="form-control mb-2" id="cName" name="cName"
                         required>
                 </div>
                 <div class="form-group">
                     <label for="cSurname">Surname</label>
-                    <input [(ngModel)]="customer.csurname" type="text" class="form-control" id="cSurname"
+                    <input [(ngModel)]="customer.csurname" type="text" class="form-control mb-2" id="cSurname"
                         name="cSurname">
                 </div>
                 <div class="form-group">
                     <label for="cEmail">Email</label>
-                    <input [(ngModel)]="customer.cemail" type="email" class="form-control" id="cEmail" name="cEmail"
+                    <input [(ngModel)]="customer.cemail" type="email" class="form-control mb-2" id="cEmail" name="cEmail"
                         required>
                 </div>
                 <div class="form-group">
                     <label for="cPhone">Phone</label>
-                    <input [(ngModel)]="customer.cphone" type="number" class="form-control" id="cPhone" name="cPhone"
+                    <input [(ngModel)]="customer.cphone" type="number" class="form-control mb-2" id="cPhone" name="cPhone"
                         required>
                 </div>
                 <div class="form-group">
                     <label for="cAddress">Address</label>
-                    <input [(ngModel)]="customer.caddress" type="text" class="form-control" id="cAddress"
+                    <input [(ngModel)]="customer.caddress" type="text" class="form-control mb-2" id="cAddress"
                         name="cAddress" required>
                 </div>
                 <button (click)="placeOrder()" class="btn btn-primary">Place Order</button>
             </form>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search pets..." [(ngModel)]="searchTerm">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-warning text-dark mx-2" type="button" (click)="searchPetsByCategory()">Search</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
