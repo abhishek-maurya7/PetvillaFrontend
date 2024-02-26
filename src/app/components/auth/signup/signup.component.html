@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <h3 class="text-center">Sign UP</h3>
+    <div class="row justify-content-center">
+        <div class="col-md-4 p-2 border-primary">
+            <form class="form" (ngSubmit)="register()">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input [(ngModel)]="credentials.username" (change)="checkUsernameAvailability()" class="form-control" type="text" name="UserName" id="username" (input)="checkUsernameAvailability()" required />
+                    <div *ngIf="!usernameAvailable && credentials.username.trim() !== ''" class="text-danger">Username is already taken.</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input [(ngModel)]="credentials.password" class="form-control" type="password" name="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">FirstName:</label>
+                    <input [(ngModel)]="customer.cname" class="form-control" type="text" name="firstname" id="firstname" required />
+                </div>
+                <div class="form-group">
+                    <label for="lastname">LastName:</label>
+                    <input [(ngModel)]="customer.csurname" class="form-control" type="text" name="lastName" id="lastname" required />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input [(ngModel)]="customer.cphone" class="form-control" type="number" min="10" max="10" name="phone" id="phone" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input [(ngModel)]="customer.cemail" class="form-control" type="email" name="email" id="email" required />
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input [(ngModel)]="customer.caddress" class="form-control" type="text" name="address" id="address" required>
+                </div>
+                <div class="form-group mt-3">
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success px-4 text-light">Register</button>
+                        <!-- <a href="/login" class="btn btn-primary">Sign Up</a> -->
+                        <button type="reset" class="btn btn-danger px-4 text-light">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
