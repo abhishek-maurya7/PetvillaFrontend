@@ -1,9 +1,7 @@
-<!-- user.pets.component.html -->
-
-<div class="container-fluid p-4">
+<div class="container-fluid p-4 text-light">
     <div class="row justify-content-center mb-4">
         <div class="col-md-6">
-            <h1>Your Cart</h1>
+            <h1 class=" text-light">Your Cart</h1>
             <table class="table table-primary" style="border-radius: 20px;overflow: hidden;">
                 <thead>
                     <tr>
@@ -30,63 +28,65 @@
             </table>
         </div>
         <div class="col-md-4">
-            <h5 class="text-center">User Details</h5>
-            <form>
+            <h1 class="text-center text-light">User Details</h1>
+            <form class="p-3 rounded-3">
                 <div class="form-group mb-2">
                     <label for="cId">Customer ID</label>
                     <input [(ngModel)]="customer.cid" type="number" min="1" class="form-control" id="cId" name="cId"
-                        required>
+                        disabled>
                 </div>
                 <div class="form-group mb-2">
                     <label for="cName">Name</label>
                     <input [(ngModel)]="customer.cname" type="text" class="form-control" id="cName" name="cName"
-                        required>
+                        disabled>
                 </div>
                 <div class="form-group mb-2">
                     <label for="cSurname">Surname</label>
                     <input [(ngModel)]="customer.csurname" type="text" class="form-control" id="cSurname"
-                        name="cSurname">
+                        name="cSurname" disabled>
                 </div>
                 <div class="form-group mb-2">
                     <label for="cEmail">Email</label>
                     <input [(ngModel)]="customer.cemail" type="email" class="form-control" id="cEmail" name="cEmail"
-                        required>
+                        disabled>
                 </div>
                 <div class="form-group mb-2">
                     <label for="cPhone">Phone</label>
                     <input [(ngModel)]="customer.cphone" type="number" class="form-control" id="cPhone" name="cPhone"
-                        required>
+                        disabled>
                 </div>
                 <div class="form-group mb-2">
                     <label for="cAddress">Address</label>
                     <input [(ngModel)]="customer.caddress" type="text" class="form-control" id="cAddress"
-                        name="cAddress" required>
+                        name="cAddress" disabled>
                 </div>
                 <button type="button" (click)="placeOrder()" class="btn btn-primary">Place Order</button>
             </form>
         </div>
     </div>
     <hr>
+    <p class="text-center fs-1">Pets</p>
     <div class="row justify-content-center mb-4">
         <div class="col-md-6">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search pets..." [(ngModel)]="searchTerm">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-warning text-dark mx-2" type="button" (click)="searchPetsByCategory()">Search</button>
+                    <button class="btn btn-outline-warning text-light text-bold mx-2" type="button" (click)="searchPetsByCategory()">Search</button>
+                    <button class="btn btn-outline-danger text-light text-bold mx-2" type="button" (click)="resetFilter()">Reset</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div *ngFor="let pet of pets" class="col-md-6 col-lg-3 mb-4">
-            <div class="card h-100 d-flex flex-column border-success">
+            <div class="card h-100 d-flex flex-column rounded-5 border-light">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ pet.name }}</h5>
+                    <h5 class="card-title">{{pet.petId}} {{ pet.name }}</h5>
                     <p class="card-text"><b>Breed:</b> {{pet.breed}} ({{pet.color}} {{pet.category}})</p>
                     <p class="card-text">{{ pet.description }}</p>
                     <p class="card-text">Price: {{ pet.price }}</p>
                     <div class="mt-auto">
-                        <button (click)="addToCart(pet)" class="btn btn-outline-success px-4">Add to cart</button>
+                        <button (click)="addToCart(pet)" class="btn bg-success px-4 text-light">Add to cart</button>
                     </div>
                 </div>
             </div>

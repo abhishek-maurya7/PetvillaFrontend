@@ -17,6 +17,7 @@ import { SuccessComponent } from './components/user/success/success.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { FooterComponent } from './partials/footer/footer.component';
+import { StoreAdminComponent } from './components/admin/store.admin/store.admin.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { FooterComponent } from './partials/footer/footer.component';
     SuccessComponent,
     HomeComponent,
     LoginComponent,
-    FooterComponent
+    FooterComponent,
+    StoreAdminComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { FooterComponent } from './partials/footer/footer.component';
     RouterModule.forRoot([
       {'path':'admin/pets', component:PetsAdminComponent},
       {'path':'admin/products', component:ProductsAdminComponent},
+      {'path':'admin/store', component:StoreAdminComponent},
       {'path':'login', component:LoginComponent},
       {'path':'signup', component:SignupComponent},
       {'path':'pets', component:PetsUserComponent},

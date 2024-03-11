@@ -56,6 +56,7 @@ export class ProductsUserComponent {
     this.productOrderQuantity = 1;
     // Recalculate total
     this.calculateTotal();
+    alert(`${order.product.name} added to cart.`)
   }
 
   updateQuantity(order: ProductOrders, event: any) {
@@ -76,14 +77,22 @@ export class ProductsUserComponent {
         console.log(response);
         this.route.navigate(['/success'])
       },
-      error: (error) => console.error(error)
+      error: (error) => alert(error)
     })
   }
 
   searchTerm: string = '';
-  searchPetsByCategory() {
+  searchProductsByCategory() {
     console.log(this.products)
     this.products = this.products.filter((pet: { productCategory: string }) => pet.productCategory === this.searchTerm);
-    console.log(this.products)
+    if(this.products.length == 0) {
+      alert("Nothing matching found.");
+      return;
+    }
+    alert(`Products have been filtered. ${this.products.length} products found.`)
+  }
+
+  resetFilter() {
+    this.ngOnInit()
   }
 }

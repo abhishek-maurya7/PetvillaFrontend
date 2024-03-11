@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SignupService } from '../../../service/auth/signup.service';
 import { Customer } from '../../../models/Customer';
 import { Login } from '../../../models/Login';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +10,7 @@ import { Login } from '../../../models/Login';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  constructor(private signupService:SignupService){}
+  constructor(private signupService:SignupService, private route:Router){}
   usernameAvailable: boolean = true; 
   checkingAvailability: boolean = false; 
   credentials = new Login('', '')
@@ -33,7 +34,7 @@ export class SignupComponent {
   }
   register() {
     if (!this.credentials.username || !this.credentials.password || !this.customer.cname || !this.customer.csurname || !this.customer.cphone || !this.customer.cemail || !this.customer.caddress) {
-      console.log('Please fill in all required fields.');
+      alert('Please fill in all required fields.');
       return;
     }
     //adding new user to login table
@@ -46,7 +47,11 @@ export class SignupComponent {
     //adding new customer to customer table
     this.customer.username = this.credentials.username;
     this.signupService.addNewCustomer(this.customer).subscribe({
-      next: (response) => console.log(response),
+      next: (response) => {
+        console.log(response);
+        alert("Meow! You've have registred successfully!")
+        this.route.navigate(['/login'])
+      },
       error: (error) => console.log(error)
     })
   }

@@ -45,8 +45,7 @@ export class PetsUserComponent {
     }
     this.petsUserService.showPets().subscribe({
       next: (response) => this.pets = response,
-      error: (error) => console.log(error),
-      complete: () => console.log("Pets have been fetched.")
+      error: (error) => console.log(error)
     })
   }
 
@@ -56,6 +55,7 @@ export class PetsUserComponent {
     for (let cartItem of this.cart) {
       this.total += cartItem.pet.price;
     }
+    alert(`${petOrdersModels.pet.name} added to cart.`)
   }
 
   placeOrder() {
@@ -65,15 +65,22 @@ export class PetsUserComponent {
         this.route.navigate(['/success'])
       },
       error: (error) => {
-        console.error(error);
+        alert(error)
       }
     });
   }
 
   searchTerm: string = '';
   searchPetsByCategory() {
-    console.log(this.pets)
     this.pets = this.pets.filter((pet: { category: string }) => pet.category === this.searchTerm);
-    console.log(this.pets)
+    if(this.pets.length == 0) {
+      alert("Nothing matching found.")
+      return;
+    }
+    alert(`${this.pets.length} matching pets found.`)
+  }
+
+  resetFilter() {
+    this.ngOnInit();
   }
 }

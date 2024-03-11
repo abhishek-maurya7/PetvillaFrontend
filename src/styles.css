@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --custom-primary: #292b44; /* Blue color */
+    --custom-secondary: #00e5ff;
+    --custom-tertiary: #EF8354;
+}
+.primary-bg {
+    background-color: var(--custom-primary);
+}
+.seconadry-bg {
+    background-color: var(--custom-secondary);
+}
+.tertiary-bg {
+    background-color: #EF8354;
+}
+body {
+    background-color: var(--custom-primary);
+}
